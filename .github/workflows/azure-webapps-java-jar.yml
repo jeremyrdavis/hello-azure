@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy JAR app to Azure Web App - quarkus-hello-azure-1699908600953
+name: Build and deploy JAR app to Azure Web App - hello-azure-1700171361359
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn clean install -Dquarkus.package.type=uber-jar -D%prod.quarkus.http.port=80 
+        run: mvn clean install -Dquarkus.package.type=uber-jar -D%prod.quarkus.http.port=80
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -36,18 +36,18 @@ jobs:
     environment:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-      
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
           name: java-app
-      
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'quarkus-hello-azure-1699908600953'
+          app-name: 'hello-azure-1700171361359'
           slot-name: 'production'
           package: '*.jar'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_08ea48a9acd14249bd3abbd27950feaf }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_ce44e175755041808c696704c682931e }}
