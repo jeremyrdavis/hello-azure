@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'hello-azure-1700171361359'
           slot-name: 'Production'
-          package: '*.-runner.jar'
+          package: '*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D54AC12697254203A5DDDEB0E18A106D }}
